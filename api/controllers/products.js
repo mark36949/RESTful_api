@@ -1,6 +1,5 @@
-const mongoose = require('mongoose')
-
-const Product = require('../models/product');
+const mongoose = require("mongoose");
+const Product = require("../models/product");
 
 exports.products_get_all = (req,res,next) => {
 	// res.status(200).json({
