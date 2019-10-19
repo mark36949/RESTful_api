@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const checkAuth = require('../middleware/check-auth')
 
 const Order = require('../models/order');
 const Product = require('../models/product');
 
 //Handle incoming GET requests to /orders
-router.get('/',(req,res,next)=>{
+router.get('/',checkAuth,(req,res,next)=>{
 	// res.status(200).json({
 	// 	message: 'Order were fetched'
 	// });
@@ -36,7 +37,7 @@ router.get('/',(req,res,next)=>{
 		});
 });
 
-router.post('/',(req,res,next)=>{
+router.post('/',checkAuth,(req,res,next)=>{
 	// const order = {
 	// 	productId: req.body.productId,
 	// 	quantity: req.body.quantity
@@ -86,7 +87,7 @@ router.post('/',(req,res,next)=>{
 	// });
 });
 
-router.get('/:orderId',(req,res,next)=>{
+router.get('/:orderId',checkAuth,(req,res,next)=>{
 	// res.status(200).json({
 	// 	message: 'Order details',
 	// 	orderId: req.params.orderId
@@ -115,7 +116,7 @@ router.get('/:orderId',(req,res,next)=>{
 		})
 });
 
-router.delete('/:orderId',(req,res,next)=>{
+router.delete('/:orderId',checkAuth,(req,res,next)=>{
 	// res.status(200).json({
 	// 	message: 'Order deleted',
 	// 	orderId: req.params.orderId
